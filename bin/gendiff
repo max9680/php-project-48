@@ -19,13 +19,62 @@ Options:
 
 DOC;
 
+function boolValueAsString($key, $value)
+{
+    if ($value === true) {
+        return "true";
+    } else {
+        return "false";
+    }
+}
+
+function genDiff($array1, $array2)
+{
+    $result = "";
+
+    ksort($array1);
+    ksort($array2);
+
+    foreach ($array1 as $key => $value) {
+        
+        if (array_key_exists($key, $array2)) {
+            
+             if ($array1[$key] === $array2[$key]) {
+
+                $result .= (is_bool($array1[$key])) ? "  " . "$key" . ": " . boolValueAsString($key, $array1[$key]) . "\n" : "  " . "$key" . ": " . "$array1[$key]\n";
+                
+                unset($array2[$key]);
+            } else {
+
+                $result .= (is_bool($array1[$key])) ? "- " . "$key" . ": " . boolValueAsString($key, $array1[$key]) . "\n" : "- " . "$key" . ": " . "$array1[$key]\n";
+                $result .= (is_bool($array2[$key])) ? "+ " . "$key" . ": " . boolValueAsString($key, $array2[$key]) . "\n" : "+ " . "$key" . ": " . "$array2[$key]\n";
+
+                unset($array2[$key]);
+            }
+        } else {
+            $result .= (is_bool($array1[$key])) ? "- " . "$key" . ": " . boolValueAsString($key, $array1[$key]) . "\n" : "- " . "$key" . ": " . "$array1[$key]\n";
+        }
+    }
+
+
+    foreach ($array2 as $key => $value) {
+        $result .= (is_bool($array2[$key])) ? "+ " . "$key" . ": " . boolValueAsString($key, $array2[$key]) . "\n" : "+ " . "$key" . ": " . "$array2[$key]\n";
+    }
+
+    return $result;
+}
+
 $args = Docopt::handle($doc, array('version'=>'gendiff 1.0'));
 // foreach ($args as $k=>$v)
 //     echo $k.': '.json_encode($v).PHP_EOL;
 
 $file1 = $args['<firstFile>'];
+$file2 = $args['<secondFile>'];
 
 $file1Content = file_get_contents($file1);
+$file2Content = file_get_contents($file2);
 
-    $result = json_decode($file1Content, true, 512, JSON_OBJECT_AS_ARRAY);
-    print_r($result);
+$file1Array = json_decode($file1Content, true, 512, JSON_OBJECT_AS_ARRAY);
+$file2Array = json_decode($file2Content, true, 512, JSON_OBJECT_AS_ARRAY);
+
+print_r(genDiff($file1Array, $file2Array));
