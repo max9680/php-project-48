@@ -15,5 +15,8 @@
         "files": [
                 "src/differ.php"
         ]
-    }
+    },
+        "bin": [
+            "bin/gendiff"
+        ]
 }
