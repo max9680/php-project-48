@@ -1,0 +1,8 @@
+name: differ-check
+on: push
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      -run: ls -la
