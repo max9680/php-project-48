@@ -5,10 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: Install project
-      - run: make install
+        run: make install
       
       - name: Check Differ function
-      - run: make test-differ
+        run: make test-differ
