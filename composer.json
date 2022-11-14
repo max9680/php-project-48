@@ -12,11 +12,22 @@
         "docopt/docopt": "^1.0"
     },
     "autoload": {
+        "psr-4": {
+                "Differ\\Differ\\": "src",
+                "Differ\\Differ\\Tests\\": "tests"
+      },
         "files": [
-                "src/differ.php"
-        ]
-    },
+                "src/Differ.php",
+                "tests/DifferTest.php"
+        ],
         "bin": [
             "bin/gendiff"
         ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "scripts": {
+        "tests": "phpunit tests"
+    }
 }
