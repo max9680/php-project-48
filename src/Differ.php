@@ -18,7 +18,7 @@ function genDiff($pathFile1, $pathFile2)
 
     $array1 = json_decode($file1Content, true, 512, JSON_OBJECT_AS_ARRAY);
     $array2 = json_decode($file2Content, true, 512, JSON_OBJECT_AS_ARRAY);
-    
+
     $result = "";
 
     ksort($array1);
@@ -31,7 +31,7 @@ function genDiff($pathFile1, $pathFile2)
                 ? "  " . "$key" . ": " . boolValueAsString($key, $array1[$key])
                  . "\n"
                 : "  " . "$key" . ": " . "$array1[$key]\n";
-                
+
                 unset($array2[$key]);
             } else {
                 $result .= (is_bool($array1[$key]))
