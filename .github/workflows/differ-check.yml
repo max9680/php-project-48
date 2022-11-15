@@ -26,9 +26,9 @@ jobs:
       - name: Install project
         run: make install
       
-      - name: Check Differ function
+      - name: Test Differ function
         run: make test-differ
-      - uses: paambaati/codeclimate-action@v2.2.4
+      - uses: paambaati/codeclimate-action@v3.2.0
         env:
           CC_TEST_REPORTER_ID: 505aa04b771d2ad5e19c875060d8fc5d4746b87d97db502c577e3319d6b6f91c
         with:
