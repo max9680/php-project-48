@@ -9,3 +9,6 @@ install:
 		
 test-differ:
 		composer exec --verbose phpunit tests
+
+test-coverage:
+		composer exec --verbose phpunit tests -- --coverage-clover build/logs/clover.xml --whitelist src
