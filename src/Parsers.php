@@ -11,21 +11,11 @@ function getContentFromFile($pathFile)
 
     switch ($formatFile) {
         case 'json':
-            {
                 $contentFile = file_get_contents($pathFile);
                 $resultArray = json_decode($contentFile, true, 512, JSON_OBJECT_AS_ARRAY);
-
-                return $resultArray;
-            }
-        case 'yml':
-        case 'yaml':
-            {
+            return $resultArray;
+        case 'yml' || 'yaml':
                 $resultArray = Yaml::parseFile($pathFile);
-
-                return $resultArray;
-            }
+            return $resultArray;
     }
-
 }
-
-
