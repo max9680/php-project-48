@@ -2,6 +2,8 @@
 
 namespace Differ\Differ;
 
+use function Differ\Parsers\getContentFromFile;
+
 function boolValueAsString($key, $value)
 {
     if ($value === true) {
@@ -13,11 +15,8 @@ function boolValueAsString($key, $value)
 
 function genDiff($pathFile1, $pathFile2)
 {
-    $file1Content = file_get_contents($pathFile1);
-    $file2Content = file_get_contents($pathFile2);
-
-    $array1 = json_decode($file1Content, true, 512, JSON_OBJECT_AS_ARRAY);
-    $array2 = json_decode($file2Content, true, 512, JSON_OBJECT_AS_ARRAY);
+    $array1 = getContentFromFile($pathFile1);
+    $array2 = getContentFromFile($pathFile2);
 
     $result = "";
 

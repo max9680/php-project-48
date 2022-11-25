@@ -9,11 +9,13 @@
         }
     ],
     "require": {
-        "docopt/docopt": "^1.0"
+        "docopt/docopt": "^1.0",
+        "symfony/yaml": "^5.4"
     },
     "autoload": {
         "files": [
-                "src/Differ.php"
+                "src/Differ.php",
+                "src/Parsers.php"
         ],
         "bin": [
             "bin/gendiff"
