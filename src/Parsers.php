@@ -6,7 +6,8 @@ use Symfony\Component\Yaml\Yaml;
 
 function getContentFromFile($pathFile)
 {
-    $formatFile = explode(".", $pathFile)[1];
+    $formatFile = explode(".", $pathFile);
+    $formatFile = end($formatFile);
 
     switch ($formatFile) {
         case 'json':
