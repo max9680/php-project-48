@@ -1,4 +1,4 @@
-name: differ-check
+name: differ-test
 
 on: push
 
