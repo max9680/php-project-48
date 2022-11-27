@@ -1,5 +1,6 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/max9680/php-project-48/workflows/hexlet-check/badge.svg)](https://github.com/max9680/php-project-48/actions)
+[![differ-test](https://github.com/max9680/php-project-48/actions/workflows/differ-test.yml/badge.svg)](https://github.com/max9680/php-project-48/actions/workflows/differ-test.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/34e6316e9cb30aba4c11/maintainability)](https://codeclimate.com/github/max9680/php-project-48/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/34e6316e9cb30aba4c11/test_coverage)](https://codeclimate.com/github/max9680/php-project-48/test_coverage)
 
