@@ -57,7 +57,7 @@ class DifferTest extends TestCase
                 }
                 fee: 100500
             }
-        }"
+        }";
         $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.json", "./tests/fixtures/file2n.json"));
     }
 }
