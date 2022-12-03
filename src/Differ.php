@@ -26,13 +26,13 @@ function createIntendant(int $depth, int $mode): string
     $intendants = ["    ", '  - ', '  + '];
 
     switch ($mode) {
-    case 0:
-        return str_repeat($intendants[0], $depth) . $intendants[0];
+        case 0:
+            return str_repeat($intendants[0], $depth) . $intendants[0];
         break;
-    case 1:
-        return str_repeat($intendants[0], $depth) . $intendants[1];
-    case 2:
-        return str_repeat($intendants[0], $depth) . $intendants[2];
+        case 1:
+            return str_repeat($intendants[0], $depth) . $intendants[1];
+        case 2:
+            return str_repeat($intendants[0], $depth) . $intendants[2];
     }
 }
 
@@ -63,7 +63,8 @@ function iter($array1, $array2, $depth, $result = "")
 
     foreach ($mergeKeys as $mergeKey) {
         // Key exists in array1 and array2
-        if (array_key_exists($mergeKey, $array1)
+        if (
+            array_key_exists($mergeKey, $array1)
             && array_key_exists($mergeKey, $array2)
         ) {
             //Value is array in $array1 and $array2
@@ -103,7 +104,8 @@ function iter($array1, $array2, $depth, $result = "")
         }
 
         //Key exists in array1 and doesn't exist in array2
-        if (array_key_exists($mergeKey, $array1)
+        if (
+            array_key_exists($mergeKey, $array1)
             && !(array_key_exists($mergeKey, $array2))
         ) {
             if (is_array($array1[$mergeKey])) {
@@ -116,7 +118,8 @@ function iter($array1, $array2, $depth, $result = "")
         }
 
         //Key doesn't exist in array1 and exists in array2
-        if (!(array_key_exists($mergeKey, $array1))
+        if (
+            !(array_key_exists($mergeKey, $array1))
             && array_key_exists($mergeKey, $array2)
         ) {
             if (is_array($array2[$mergeKey])) {
