@@ -126,8 +126,8 @@ function iter($array1, $array2, $depth, $result = "")
                 $result = $result . createIntendant($depth, 2) . $mergeKey .
                 ": {\n" . getArrayValues($array2[$mergeKey], $depth + 1) . "\n";
             } else {
-                $result = $result . createIntendant($depth, 2) . $mergeKey . ":
-                " . valueAsString($array2[$mergeKey]) . "\n";
+                $result = $result . createIntendant($depth, 2) . $mergeKey .
+                ": " . valueAsString($array2[$mergeKey]) . "\n";
             }
         }
     }
