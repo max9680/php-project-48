@@ -27,4 +27,6 @@ $args = Docopt::handle($doc, array('version'=>'gendiff 1.0'));
 // foreach ($args as $k=>$v)
 //     echo $k.': '.json_encode($v).PHP_EOL;
 
-print_r(genDiff($args['<firstFile>'], $args['<secondFile>']));
+// print_r($args['--format']);
+
+print_r(genDiff($args['<firstFile>'], $args['<secondFile>'], $args['--format']));

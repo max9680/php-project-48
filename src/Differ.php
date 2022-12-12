@@ -3,7 +3,7 @@
 namespace Differ\Differ;
 
 use function Differ\Parsers\getContentFromFile;
-use function Differ\Formatter\formatter;
+use function Differ\Formatter\Stylish\stylish;
 
 function diff(array $array1, array $array2)
 {
@@ -77,10 +77,13 @@ function diff(array $array1, array $array2)
     return $arrayDiff;
 }
 
-function genDiff($pathFile1, $pathFile2)
+function genDiff($pathFile1, $pathFile2, $formatter = 'stylish')
 {
     $array1 = getContentFromFile($pathFile1);
     $array2 = getContentFromFile($pathFile2);
 
-    return formatter(diff($array1, $array2), 'stylish');
+    switch ($formatter) {
+        case 'stylish':
+            return stylish(diff($array1, $array2));
+    }
 }
