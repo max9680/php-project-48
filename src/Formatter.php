@@ -37,7 +37,7 @@ function formatter($array, $formatter, $depth = 0, $result = '')
             }
 
             if ($depth == 0) {
-                $result = $result . "}\n";
+                $result = $result . "}";
             } else {
                 $result = $result . str_repeat('    ', $depth) . "}";
             }
