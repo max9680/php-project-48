@@ -10,3 +10,6 @@
 
 #### Comparison of yml-files:
 [![asciicast](https://asciinema.org/a/12XPBMaak8qZslYcwGnX0s3do.svg)](https://asciinema.org/a/12XPBMaak8qZslYcwGnX0s3do?autoplay=1)
+
+#### Using format option:
+[![asciicast](https://asciinema.org/a/PfdQZWlDlR9Epl2QK9qAwNTz3.svg)](https://asciinema.org/a/PfdQZWlDlR9Epl2QK9qAwNTz3?autoplay=1)
