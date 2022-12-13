@@ -29,4 +29,8 @@ $args = Docopt::handle($doc, array('version'=>'gendiff 1.0'));
 
 // print_r($args['--format']);
 
-print_r(genDiff($args['<firstFile>'], $args['<secondFile>'], $args['--format']));
+$firstFilePath = $args['<firstFile>'];
+$secondFilePath = $args['<secondFile>'];
+$format = $args['--format'];
+
+print_r(genDiff($firstFilePath, $secondFilePath, $format));
