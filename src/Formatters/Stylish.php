@@ -1,26 +1,13 @@
 <?php
 
-namespace Differ\Formatter\Stylish;
+namespace Differ\Formatters\Stylish;
 
-function valueAsString($value)
-{
-    if (is_bool($value)) {
-        if ($value === true) {
-            return "true";
-        } else {
-            return "false";
-        }
-    }
-
-    if ($value === null) {
-        return "null";
-    }
-
-    return $value;
-}
+use function Differ\Formatters\valueAsString;
 
 function stylish($array, $depth = 0, $result = '')
 {
+    // print_r($array);
+
     if ($depth == 0) {
         $result = $result . "{\n";
     }
@@ -40,5 +27,6 @@ function stylish($array, $depth = 0, $result = '')
         $result = $result . str_repeat('    ', $depth) . "}";
     }
 
+    // var_dump($result);
     return $result;
 }
