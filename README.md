@@ -13,3 +13,6 @@
 
 #### Using format option:
 [![asciicast](https://asciinema.org/a/i2eeb4y2f5MilPbbzcFkWlKV5.svg)](https://asciinema.org/a/i2eeb4y2f5MilPbbzcFkWlKV5?autoplay=1)
+
+#### Using stylish and plain format option:
+[![asciicast](https://asciinema.org/a/kkA4UKet1WmYswv9O2gvGBN7g.svg)](https://asciinema.org/a/kkA4UKet1WmYswv9O2gvGBN7g?autoplay=1)
