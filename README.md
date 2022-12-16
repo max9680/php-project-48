@@ -15,4 +15,4 @@
 [![asciicast](https://asciinema.org/a/i2eeb4y2f5MilPbbzcFkWlKV5.svg)](https://asciinema.org/a/i2eeb4y2f5MilPbbzcFkWlKV5?autoplay=1)
 
 #### Using stylish and plain format option:
-[![asciicast](https://asciinema.org/a/kkA4UKet1WmYswv9O2gvGBN7g.svg)](https://asciinema.org/a/kkA4UKet1WmYswv9O2gvGBN7g?autoplay=1)
+[![asciicast](https://asciinema.org/a/kNHiQkzbVki8xzo07QOmH66S0.svg)](https://asciinema.org/a/kNHiQkzbVki8xzo07QOmH66S0?autoplay=1)
