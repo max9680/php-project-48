@@ -16,3 +16,6 @@
 
 #### Using stylish and plain format option:
 [![asciicast](https://asciinema.org/a/kNHiQkzbVki8xzo07QOmH66S0.svg)](https://asciinema.org/a/kNHiQkzbVki8xzo07QOmH66S0?autoplay=1)
+
+#### Using json format option:
+[![asciicast](https://asciinema.org/a/N9Tf8wsvdsSp3DN6nWINtVxz3.svg)](https://asciinema.org/a/N9Tf8wsvdsSp3DN6nWINtVxz3?autoplay=1)
