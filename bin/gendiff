@@ -21,13 +21,7 @@ Options:
 
 DOC;
 
-
-
 $args = Docopt::handle($doc, array('version'=>'gendiff 1.0'));
-// foreach ($args as $k=>$v)
-//     echo $k.': '.json_encode($v).PHP_EOL;
-
-// print_r($args['--format']);
 
 $firstFilePath = $args['<firstFile>'];
 $secondFilePath = $args['<secondFile>'];
