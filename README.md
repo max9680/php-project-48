@@ -4,7 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/34e6316e9cb30aba4c11/maintainability)](https://codeclimate.com/github/max9680/php-project-48/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/34e6316e9cb30aba4c11/test_coverage)](https://codeclimate.com/github/max9680/php-project-48/test_coverage)
 
-### Gendiff utility:
+## Gendiff utility:
 Utility compares json and yml files. Output can be displayed in few formats - stylish, plain and json.
 
 ## Requirements
@@ -22,12 +22,16 @@ $ make install
 
 ## Usage
 gendiff (-h|--help)
+
 gendiff (-v|--version)
+
 gendiff [--format <fmt>] <firstFile> <secondFile>
 
 ## Options
 -h --help               Show this screen
+
 -v --version            Show version
+
 --format <fmt>          Report format [default: stylish]
 
 ## Examples of usage
