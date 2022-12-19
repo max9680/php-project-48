@@ -4,10 +4,8 @@ namespace Differ\Formatters\Stylish;
 
 use function Differ\Formatters\valueAsString;
 
-function stylish($array, $depth = 0, $result = '')
+function stylish(array $array, int $depth = 0, string $result = ''): string
 {
-    // print_r($array);
-
     if ($depth == 0) {
         $result = $result . "{\n";
     }
@@ -27,6 +25,5 @@ function stylish($array, $depth = 0, $result = '')
         $result = $result . str_repeat('    ', $depth) . "}";
     }
 
-    // var_dump($result);
     return $result;
 }

@@ -20,7 +20,7 @@ function normalizeValue($value)
     }
 }
 
-function plain($array, $path = '', $result = '')
+function plain(array $array, string $path = '', string $result = ''): string
 {
     if ($path !== '') {
         $path = $path . '.';
@@ -31,13 +31,9 @@ function plain($array, $path = '', $result = '')
     foreach ($keys as $key) {
             $keyPrefix = substr($key, 0, 4);
             $keyWord = substr($key, 4, strlen($key));
-            // var_dump($keyPrefix);
-            // var_dump($keyWord);
 
         if (($keyPrefix == "    ") && (is_array($array[$key]))) {
             $result = $result . plain($array[$key], $path . $keyWord);
-          // $path = $keyWord;
-          // var_dump($keyWord);
         }
 
         if (($keyPrefix == REMOVE) && !array_key_exists(ADD . $keyWord, $array)) {

@@ -75,7 +75,7 @@ function diff(array $array1, array $array2): array
     return $arrayDiff;
 }
 
-function genDiff($pathFile1, $pathFile2, $formatter = 'stylish')
+function genDiff(string $pathFile1, string $pathFile2, string $formatter = 'stylish'): string
 {
     $array1 = getContentFromFile($pathFile1);
     $array2 = getContentFromFile($pathFile2);
