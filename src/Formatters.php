@@ -32,6 +32,8 @@ function formatter($array, $formatter)
             return plain($array);
         case 'json':
             return json($array);
+        default:
+            throw new \Exception("Unknown format");
     }
 
     return stylish($array);
