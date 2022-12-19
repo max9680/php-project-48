@@ -28,11 +28,11 @@ gendiff (-v|--version)
 gendiff [--format `<fmt`>] `<firstFile`> `<secondFile`>
 
 ## Options
--h --help &emsp Show this screen
+-h --help &emsp;&emsp; Show this screen
 
--v --version            Show version
+-v --version &emsp; Show version
 
---format <fmt>          Report format [default: stylish]
+--format <fmt> &emsp; Report format [default: stylish]
 
 ## Examples of usage
 ```sh
