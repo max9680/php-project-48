@@ -4,7 +4,7 @@ namespace Differ\Parsers;
 
 use Symfony\Component\Yaml\Yaml;
 
-function getContentFromFile(string $pathFile)
+function getContentFromFile(string $pathFile): array
 {
     $formatFile = explode(".", $pathFile);
     $formatFile = end($formatFile);
