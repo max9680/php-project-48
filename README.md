@@ -28,7 +28,7 @@ gendiff (-v|--version)
 gendiff [--format `<fmt`>] `<firstFile`> `<secondFile`>
 
 ## Options
--h --help emsp Show this screen
+-h --help &emsp Show this screen
 
 -v --version            Show version
 
