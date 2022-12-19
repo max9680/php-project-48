@@ -29,7 +29,7 @@ function formatter(array $array, string $formatter): string
         case 'stylish':
             return stylish($array);
         case 'plain':
-            return plain($array);
+            return substr(plain($array), 0, -1);
         case 'json':
             return json($array);
         default:
