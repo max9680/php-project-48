@@ -5,12 +5,10 @@ namespace Differ\Differ;
 use function Differ\Parsers\getContentFromFile;
 use function Differ\Formatters\formatter;
 
-function diff(array $array1, array $array2)
+function diff(array $array1, array $array2): array
 {
     $mergeKeys = array_unique(array_merge(array_keys($array1), array_keys($array2)));
     asort($mergeKeys);
-
-    $result = [];
 
     $arrayDiff = array_reduce($mergeKeys, function ($result, $mergeKey) use ($array1, $array2) {
 
