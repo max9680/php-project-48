@@ -23,7 +23,7 @@ function valueAsString($value)
     return $value;
 }
 
-function formatter($array, $formatter)
+function formatter(array $array, string $formatter): string
 {
     switch ($formatter) {
         case 'stylish':
