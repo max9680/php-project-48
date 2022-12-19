@@ -4,6 +4,7 @@ namespace Differ\Formatters;
 
 use function Differ\Formatters\Stylish\stylish;
 use function Differ\Formatters\Plain\plain;
+use function Differ\Formatters\Json\json;
 
 function valueAsString($value)
 {
@@ -29,6 +30,8 @@ function formatter($array, $formatter)
             return stylish($array);
         case 'plain':
             return plain($array);
+        case 'json':
+            return json($array);
     }
 
     return stylish($array);
