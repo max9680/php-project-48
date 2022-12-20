@@ -12,7 +12,8 @@ const EQUAL = "    ";
 function diff(array $array1, array $array2): array
 {
     $mergeKeys = array_unique(array_merge(array_keys($array1), array_keys($array2)));
-    asort($mergeKeys);
+    // asort($mergeKeys);
+    usort($mergeKeys, fn($a, $b) => $a <=> $b);
 
     $arrayDiff = array_reduce($mergeKeys, function ($result, $mergeKey) use ($array1, $array2) {
 
@@ -23,8 +24,7 @@ function diff(array $array1, array $array2): array
         ) {
           //Value is array in $array1 and $array2
             if (is_array($array1[$mergeKey]) && is_array($array2[$mergeKey])) {
-                $newKey = EQUAL . $mergeKey;
-                $result[$newKey] = diff($array1[$mergeKey], $array2[$mergeKey]);
+                $result[EQUAL . $mergeKey] = diff($array1[$mergeKey], $array2[$mergeKey]);
                 return $result;
             }
 
