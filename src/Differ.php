@@ -4,6 +4,7 @@ namespace Differ\Differ;
 
 use function Differ\Parsers\getContentFromFile;
 use function Differ\Formatters\formatter;
+use function Functional\sort;
 
 const ADD = "  + ";
 const REMOVE = "  - ";
@@ -12,8 +13,10 @@ const EQUAL = "    ";
 function diff(array $array1, array $array2): array
 {
     $mergeKeys = array_unique(array_merge(array_keys($array1), array_keys($array2)));
-    sort($mergeKeys);
+    // sort($mergeKeys);
     // usort($mergeKeys, fn($a, $b) => $a <=> $b);
+
+    $mergeKeys = sort($mergeKeys, fn($left, $right) => strcmp($left, $right));
 
     $arrayDiff = array_reduce($mergeKeys, function ($result, $mergeKey) use ($array1, $array2) {
 
