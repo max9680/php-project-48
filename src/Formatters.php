@@ -35,6 +35,4 @@ function formatter(array $array, string $formatter): string
         default:
             throw new \Exception("Unknown format");
     }
-
-    return stylish($array);
 }
