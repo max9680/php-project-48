@@ -4,8 +4,8 @@ namespace Differ\Formatters\Plain;
 
 use function Differ\Formatters\valueAsString;
 
-const ADD = "  + ";
-const REMOVE = "  - ";
+use const Differ\Differ\ADD;
+use const Differ\Differ\REMOVE;
 
 function normalizeValue($value)
 {
