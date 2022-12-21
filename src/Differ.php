@@ -32,8 +32,11 @@ function diff(array $array1, array $array2): array
 
           //Value is array in $array1 and  not array in $array2
             if (is_array($array1[$mergeKey]) && !is_array($array2[$mergeKey])) {
-                $result['  - ' . $mergeKey] = diff($array1[$mergeKey], $array1[$mergeKey]);
-                $result['  + ' . $mergeKey] = $array2[$mergeKey];
+                $newKey = REMOVE . $mergeKey;
+                $result[$newKey] = diff($array1[$mergeKey], $array1[$mergeKey]);
+
+                $newKey = ADD . $mergeKey;
+                $result[$newKey] = $array2[$mergeKey];
             }
 
           //Value is not array in $array1 and array in $array2
