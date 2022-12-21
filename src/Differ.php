@@ -25,8 +25,8 @@ function diff(array $array1, array $array2): array
         ) {
           //Value is array in $array1 and $array2
             if (is_array($array1[$mergeKey]) && is_array($array2[$mergeKey])) {
-                $arrayDiff = diff($array1[$mergeKey], $array2[$mergeKey]);
-                $result[EQUAL . $mergeKey] = $arrayDiff;
+                $newKey = EQUAL . $mergeKey;
+                $result[$newKey] = diff($array1[$mergeKey], $array2[$mergeKey]);
                 return $result;
             }
 
