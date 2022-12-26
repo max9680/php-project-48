@@ -20,36 +20,27 @@ function normalizeValue($value)
     }
 }
 
-function plain(array $array, string $path = '', string $result = ''): string
+function plain(array $array, string $path = ''): string
 {
-    if ($path !== '') {
-        $path = $path . '.';
-    }
-
-    $keys = array_keys($array);
-
-    foreach ($keys as $key) {
-            $keyPrefix = substr($key, 0, 4);
-            $keyWord = substr($key, 4, strlen($key));
-
-        if (($keyPrefix == "    ") && (is_array($array[$key]))) {
-            $result = $result . plain($array[$key], $path . $keyWord);
+    $output = array_reduce($array, function($result, $item) use ($path) {
+        if ($item['action'] == 'same' && is_array($item['value'])) {
+            $result = $result . plain($item['value'], $path . $item['property'] . ".");
         }
 
-        if (($keyPrefix == REMOVE) && !array_key_exists(ADD . $keyWord, $array)) {
-            $result = $result . "Property " . normalizeValue($path . $keyWord) . " was removed\n";
+        if ($item['action'] == 'added') {
+            $result = $result . "Property " . normalizeValue($path . $item['property']) . " was added with value: " . normalizeValue($item['value']) . "\n";
         }
 
-        if (($keyPrefix == ADD) && !array_key_exists(REMOVE . $keyWord, $array)) {
-            $result = $result . "Property " . normalizeValue($path . $keyWord)
-             . " was added with value: " . normalizeValue($array[$key]) . "\n";
+        if ($item['action'] == 'removed') {
+            $result = $result . "Property " . normalizeValue($path . $item['property']) . " was removed\n";
         }
 
-        if (($keyPrefix == REMOVE) && array_key_exists(ADD . $keyWord, $array)) {
-              $result = $result . "Property " . normalizeValue($path . $keyWord) . " was updated. From "
-               . normalizeValue($array[REMOVE . $keyWord]) . " to " .  normalizeValue($array[ADD . $keyWord]) . "\n";
+        if ($item['action'] == 'updated') {
+            $result = $result . "Property " . normalizeValue($path . $item['property']) . " was updated. From " . normalizeValue($item['value']) . " to " . normalizeValue($item['new value']) . "\n";
         }
-    }
 
         return $result;
+    }, '');
+
+    return $output;
 }
