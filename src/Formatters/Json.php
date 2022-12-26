@@ -7,7 +7,6 @@ use function Differ\Formatters\valueAsString;
 function json(array $array): array
 {
     foreach ($array as $item) {
-        
         if ($item['action'] == 'removed') {
             $index = '  - ' . $item['property'];
 
@@ -29,7 +28,6 @@ function json(array $array): array
         }
 
         if ($item['action'] == 'updated') {
-            
             $index = '  - ' . $item['property'];
 
             if (is_array($item['value'])) {
@@ -48,9 +46,8 @@ function json(array $array): array
         }
 
         if ($item['action'] == 'same') {
-            
             $index = '    ' . $item['property'];
-            
+
             if (is_array($item['value'])) {
                 $result[$index] = json($item['value']);
             } else {
@@ -58,6 +55,6 @@ function json(array $array): array
             }
         }
     }
-    
+
     return $result;
 }
