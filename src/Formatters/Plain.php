@@ -4,9 +4,6 @@ namespace Differ\Formatters\Plain;
 
 use function Differ\Formatters\valueAsString;
 
-use const Differ\Differ\ADD;
-use const Differ\Differ\REMOVE;
-
 function normalizeValue($value)
 {
     if (is_array($value)) {

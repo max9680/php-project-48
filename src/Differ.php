@@ -4,11 +4,6 @@ namespace Differ\Differ;
 
 use function Differ\Parsers\getContentFromFile;
 use function Differ\Formatters\formatter;
-use function Functional\sort;
-
-const ADD = "  + ";
-const REMOVE = "  - ";
-const EQUAL = "    ";
 
 function diff(array $array1, array $array2)
 {

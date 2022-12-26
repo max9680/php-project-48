@@ -2,8 +2,6 @@
 
 namespace Differ\Formatters\Json;
 
-use function Differ\Formatters\valueAsString;
-
 function json(array $array): array
 {
     foreach ($array as $item) {
