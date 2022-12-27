@@ -27,11 +27,11 @@ function formatter(array $array, string $formatter): string
 {
     switch ($formatter) {
         case 'stylish':
-            return stylish($array);
+            return "{\n" . stylish($array) . "}";
         case 'plain':
             return substr(plain($array), 0, -1);
         case 'json':
-            return json($array);
+            return json_encode(json($array));
         default:
             throw new \Exception("Unknown format");
     }

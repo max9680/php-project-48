@@ -4,26 +4,59 @@ namespace Differ\Formatters\Stylish;
 
 use function Differ\Formatters\valueAsString;
 
-function stylish(array $array, int $depth = 0, string $result = ''): string
+function stylish(array $array, int $depth = 1): string
 {
-    if ($depth == 0) {
-        $result = $result . "{\n";
-    }
+        $output = array_reduce($array, function ($result, $item) use ($depth) {
+            switch ($item['action']) {
+                case 'same':
+                    if (is_array($item['value'])) {
+                        $result = $result . str_repeat('    ', $depth) . $item['property'] . ": {\n";
+                        $result = $result . stylish($item['value'], $depth + 1) . str_repeat('    ', $depth) . "}\n";
+                    } else {
+                        $result = $result . str_repeat('    ', $depth) . $item['property'] . ": "
+                        . valueAsString($item['value']) . "\n";
+                    }
+                    break;
+                case 'added':
+                    if (is_array($item['value'])) {
+                        $result = $result . str_repeat('    ', $depth - 1) . '  + ' . $item['property'] . ": {\n";
+                        $result = $result . stylish($item['value'], $depth + 1) . str_repeat('    ', $depth) . "}\n";
+                    } else {
+                        $result = $result . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
+                        . ": " . valueAsString($item['value']) . "\n";
+                    }
+                    break;
+                case 'removed':
+                    if (is_array($item['value'])) {
+                        $result = $result . str_repeat('    ', $depth - 1) . '  - ' . $item['property']
+                        . ": {\n";
+                        $result = $result . stylish($item['value'], $depth + 1) . str_repeat('    ', $depth)
+                        . "}\n";
+                    } else {
+                        $result = $result . str_repeat('    ', $depth - 1) . '  - ' . $item['property'] . ": "
+                        . valueAsString($item['value']) . "\n";
+                    }
+                    break;
+                case 'updated':
+                    if (is_array($item['value'])) {
+                        $result = $result . str_repeat('    ', $depth - 1)
+                        . '  - ' . $item['property'] . ": {\n";
+                        $result = $result . stylish($item['value'], $depth + 1)
+                        . str_repeat('    ', $depth) . "}\n";
+                        $result = $result . str_repeat('    ', $depth - 1)
+                        . '  + ' . $item['property'] . ": " . valueAsString($item['new value']) . "\n";
+                    } else {
+                        $result = $result . str_repeat('    ', $depth - 1) . '  - ' . $item['property']
+                        . ": " . valueAsString($item['value']) . "\n";
+                        $result = $result . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
+                        . ": " . valueAsString($item['new value']) . "\n";
+                    }
+                    break;
+            }
 
-    foreach ($array as $index => $key) {
-        if (is_array($key)) {
-            $result = $result . str_repeat('    ', $depth) . $index . ": {\n";
-            $result = $result . stylish($key, $depth + 1) . "\n";
-        } else {
-            $result = $result . str_repeat('    ', $depth) . $index . ": " . valueAsString($key) . "\n";
-        }
-    }
 
-    if ($depth == 0) {
-        $result = $result . "}";
-    } else {
-        $result = $result . str_repeat('    ', $depth) . "}";
-    }
+            return $result;
+        }, '');
 
-    return $result;
+        return $output;
 }
