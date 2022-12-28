@@ -47,8 +47,8 @@ function stylish(array $array, int $depth = 1): string
                         . '  - ' . $item['property'] . ": {\n";
                         $result = $result . stylish($item['value'], $depth + 1)
                         . str_repeat('    ', $depth) . "}\n";
-                        $result = $result . str_repeat('    ', $depth - 1)
-                        . '  + ' . $item['property'] . ": " . valueAsString($item['new value']) . "\n";
+                        // $result = $result . str_repeat('    ', $depth - 1)
+                        // . '  + ' . $item['property'] . ": " . valueAsString($item['new value']) . "\n";
                     } else {
                         $result = $result . str_repeat('    ', $depth - 1) . '  - ' . $item['property']
                         . ": " . valueAsString($item['value']) . "\n";
