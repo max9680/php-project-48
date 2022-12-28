@@ -56,7 +56,7 @@ function stylish(array $array, int $depth = 1): string
 
 
             return $result;
-        }, '');
+        }, null);
 
         return $output;
 }
