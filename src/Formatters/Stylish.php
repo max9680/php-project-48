@@ -52,15 +52,15 @@ function stylish(array $array, int $depth = 1): string
                     } else {
                         $result = $result . str_repeat('    ', $depth - 1) . '  - ' . $item['property']
                         . ": " . valueAsString($item['value']) . "\n";
+                    }
 
-                        if (is_array($item['new value'])) {
-                            $result = $result . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
-                            . ": " . stylish($item['new value'], $depth + 1) . "\n";
-                        } else {
-                            // print_r($item['new value']);
-                            $result = $result . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
-                            . ": " . valueAsString($item['new value']) . "\n";
-                        }
+                    if (is_array($item['new value'])) {
+                        $result = $result . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
+                        . ": {\n" . stylish($item['new value'], $depth + 1) . str_repeat('    ', $depth) . "}\n";
+                    } else {
+                        // print_r($item['new value']);
+                        $result = $result . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
+                        . ": " . valueAsString($item['new value']) . "\n";
                     }
                     break;
             }
