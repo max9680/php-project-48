@@ -6,7 +6,7 @@ use function Differ\Formatters\valueAsString;
 
 function stylish(array $array, int $depth = 1): string
 {
-        $output = array_reduce($array, function ($result, $item) use ($depth) {
+        $output = array_reduce($array, function (string $result, array $item) use ($depth) {
             switch ($item['action']) {
                 case 'same':
                     if (is_array($item['value'])) {
