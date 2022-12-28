@@ -10,7 +10,7 @@ function stylish(array $array, int $depth = 1): string
             if (!is_array($item)) {
                 print_r($item);
             }
-            
+
             switch ($item['action']) {
                 case 'same':
                     if (is_array($item['value'])) {
