@@ -42,7 +42,7 @@ function diff(array $array1, array $array2): array
             if (!is_array($array1[$mergeKey]) && is_array($array2[$mergeKey])) {
                 $array['action'] = 'updated';
                 $array['value'] = $array1[$mergeKey];
-                $array['new value'] = $array2[$mergeKey];
+                $array['new value'] = diff($array2[$mergeKey], $array2[$mergeKey]);
                 // $result['  - '. $mergeKey] = $array1[$mergeKey];
               // $result['  + '. $mergeKey] = diff($array2[$mergeKey], $array2[$mergeKey]);
             }
