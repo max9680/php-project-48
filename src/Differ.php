@@ -8,7 +8,7 @@ use function Differ\Formatters\formatter;
 function diff(array $array1, array $array2): array
 {
     $mergeKeys = array_unique(array_merge(array_keys($array1), array_keys($array2)));
-    asort($mergeKeys);
+    usort($mergeKeys, fn($a, $b) => $a <=> $b);
     // $mergeKeys = sort($uniqueKeys, fn($left, $right) => strcmp($left, $right));
 
      // $result = [];
