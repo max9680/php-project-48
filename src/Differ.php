@@ -40,7 +40,7 @@ function diff(array $array1, array $array2): array
             }
         //Value is not array in $array1 and  not array in $array2
             if (!is_array($array1[$mergeKey]) && !is_array($array2[$mergeKey])) {
-                if ($array1[$mergeKey] == $array2[$mergeKey]) {
+                if ($array1[$mergeKey] === $array2[$mergeKey]) {
                     $array['action'] = 'same';
                     $array['value'] = $array1[$mergeKey];
                 } else {
