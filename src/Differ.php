@@ -11,9 +11,11 @@ function diff(array $array1, array $array2): array
     asort($mergeKeys);
 
     $arrayDiff = array_map(function ($mergeKey) use ($array1, $array2) {
-        // Key exists in array1 and array2
-          $array['property'] = $mergeKey;
+        
+        $array = [];  
+        $array['property'] = $mergeKey;
 
+        // Key exists in array1 and array2
         if (
             array_key_exists($mergeKey, $array1)
             && array_key_exists($mergeKey, $array2)
