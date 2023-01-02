@@ -7,10 +7,6 @@ use function Differ\Formatters\formatter;
 
 function createArrayDiff(array $array1, array $array2, string $mergeKey): array
 {
-    $action = null;
-    $value = null;
-    $newValue = null;
-
         // Key exists in array1 and array2
     if (
             array_key_exists($mergeKey, $array1)
@@ -75,6 +71,18 @@ function createArrayDiff(array $array1, array $array2, string $mergeKey): array
         } else {
             $value = $array2[$mergeKey];
         }
+    }
+
+    if (!isset($action)) {
+        $action = null;
+    }
+
+    if (!isset($value)) {
+        $value = null;
+    }
+
+    if (!isset($newValue)) {
+        $newValue = null;
     }
 
     return [
