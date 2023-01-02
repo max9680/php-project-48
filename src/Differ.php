@@ -5,9 +5,11 @@ namespace Differ\Differ;
 use function Differ\Parsers\getContentFromFile;
 use function Differ\Formatters\formatter;
 
-function createArrayDiff(array $array1, array $array2, $mergeKey): array
+function createArrayDiff(array $array1, array $array2, string $mergeKey): array
 {
-    $array = [];
+    $action = null;
+    $value = null;
+    $newValue = null;
 
         // Key exists in array1 and array2
     if (
@@ -73,10 +75,6 @@ function createArrayDiff(array $array1, array $array2, $mergeKey): array
         } else {
             $value = $array2[$mergeKey];
         }
-    }
-
-    if (!isset($newValue)) {
-        $newValue = null;
     }
 
     return [
