@@ -4,6 +4,7 @@ namespace Differ\Differ;
 
 use function Differ\Parsers\getContentFromFile;
 use function Differ\Formatters\formatter;
+use function Functional\sort;
 
 function createArrayDiff(array $array1, array $array2, string $mergeKey): array
 {
@@ -96,12 +97,13 @@ function createArrayDiff(array $array1, array $array2, string $mergeKey): array
 function diff(array $array1, array $array2): array
 {
     $mergeKeys = array_unique(array_merge(array_keys($array1), array_keys($array2)));
-    asort($mergeKeys);
+
+    $mergeKeysSorted = sort($mergeKeys, fn ($left, $right) => strcmp($left, $right), true);
 
     $arrayDiff = array_map(function ($mergeKey) use ($array1, $array2) {
 
         return createArrayDiff($array1, $array2, $mergeKey);
-    }, $mergeKeys);
+    }, $mergeKeysSorted);
 
         return $arrayDiff;
 }
