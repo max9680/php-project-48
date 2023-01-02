@@ -10,74 +10,74 @@ function createArrayDiff(array $array1, array $array2, $mergeKey): array
     $array = [];
 
         // Key exists in array1 and array2
-        if (
+    if (
             array_key_exists($mergeKey, $array1)
             && array_key_exists($mergeKey, $array2)
-        ) {
+    ) {
         //Value is array in $array1 and $array2
-            if (is_array($array1[$mergeKey]) && is_array($array2[$mergeKey])) {
-                $action = 'same';
-                $value = diff($array1[$mergeKey], $array2[$mergeKey]);
-            }
+        if (is_array($array1[$mergeKey]) && is_array($array2[$mergeKey])) {
+            $action = 'same';
+            $value = diff($array1[$mergeKey], $array2[$mergeKey]);
+        }
 
         //Value is array in $array1 and  not array in $array2
-            if (is_array($array1[$mergeKey]) && !is_array($array2[$mergeKey])) {
-                $action = 'updated';
-                $value = diff($array1[$mergeKey], $array1[$mergeKey]);
-                $newValue = $array2[$mergeKey];
-            }
+        if (is_array($array1[$mergeKey]) && !is_array($array2[$mergeKey])) {
+            $action = 'updated';
+            $value = diff($array1[$mergeKey], $array1[$mergeKey]);
+            $newValue = $array2[$mergeKey];
+        }
 
         //Value is  not array in $array1 and array in $array2
-            if (!is_array($array1[$mergeKey]) && is_array($array2[$mergeKey])) {
+        if (!is_array($array1[$mergeKey]) && is_array($array2[$mergeKey])) {
+            $action = 'updated';
+            $value = $array1[$mergeKey];
+            $newValue = diff($array2[$mergeKey], $array2[$mergeKey]);
+            ;
+        }
+        //Value is not array in $array1 and  not array in $array2
+        if (!is_array($array1[$mergeKey]) && !is_array($array2[$mergeKey])) {
+            if ($array1[$mergeKey] === $array2[$mergeKey]) {
+                $action = 'same';
+                $value = $array1[$mergeKey];
+            } else {
                 $action = 'updated';
                 $value = $array1[$mergeKey];
-                $newValue = diff($array2[$mergeKey], $array2[$mergeKey]);
-                ;
-            }
-        //Value is not array in $array1 and  not array in $array2
-            if (!is_array($array1[$mergeKey]) && !is_array($array2[$mergeKey])) {
-                if ($array1[$mergeKey] === $array2[$mergeKey]) {
-                    $action = 'same';
-                    $value = $array1[$mergeKey];
-                } else {
-                    $action = 'updated';
-                    $value = $array1[$mergeKey];
-                    $newValue = $array2[$mergeKey];
-                }
+                $newValue = $array2[$mergeKey];
             }
         }
+    }
 
       // Key exists in array1 and doesn't exist in array2
-        if (
+    if (
             array_key_exists($mergeKey, $array1)
             && !array_key_exists($mergeKey, $array2)
-        ) {
-              $action = 'removed';
+    ) {
+          $action = 'removed';
 
-            if (is_array($array1[$mergeKey])) {
-                $value = diff($array1[$mergeKey], $array1[$mergeKey]);
-            } else {
-                $value = $array1[$mergeKey];
-            }
+        if (is_array($array1[$mergeKey])) {
+            $value = diff($array1[$mergeKey], $array1[$mergeKey]);
+        } else {
+            $value = $array1[$mergeKey];
         }
+    }
 
       // Key doesn't exists in array1 and exists in array2
-        if (
+    if (
             !array_key_exists($mergeKey, $array1)
             && array_key_exists($mergeKey, $array2)
-        ) {
-            $action = 'added';
+    ) {
+        $action = 'added';
 
-            if (is_array($array2[$mergeKey])) {
-                $value = diff($array2[$mergeKey], $array2[$mergeKey]);
-            } else {
-                $value = $array2[$mergeKey];
-            }
+        if (is_array($array2[$mergeKey])) {
+            $value = diff($array2[$mergeKey], $array2[$mergeKey]);
+        } else {
+            $value = $array2[$mergeKey];
         }
+    }
 
-        if (!isset($newValue)) {
-            $newValue = null;
-        }
+    if (!isset($newValue)) {
+        $newValue = null;
+    }
 
     return [
         'property' => $mergeKey,
