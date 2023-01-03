@@ -48,28 +48,28 @@ function stylish(array $array, int $depth = 1): string
                             . stylish($item['value'], $depth + 1)
                             . str_repeat('    ', $depth) . "}\n"
                             . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
-                        . ": {\n" . stylish($item['new value'], $depth + 1) . str_repeat('    ', $depth) . "}\n";
-                            } else {
-                                return $result . str_repeat('    ', $depth - 1)
-                                . '  - ' . $item['property'] . ": {\n"
-                                . stylish($item['value'], $depth + 1)
-                                . str_repeat('    ', $depth) . "}\n"
-                                . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
-                        . ": " . valueAsString($item['new value']) . "\n";
-                            }
+                            . ": {\n" . stylish($item['new value'], $depth + 1) . str_repeat('    ', $depth) . "}\n";
+                        } else {
+                            return $result . str_repeat('    ', $depth - 1)
+                            . '  - ' . $item['property'] . ": {\n"
+                            . stylish($item['value'], $depth + 1)
+                            . str_repeat('    ', $depth) . "}\n"
+                            . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
+                            . ": " . valueAsString($item['new value']) . "\n";
+                        }
                         // $result = $result . str_repeat('    ', $depth - 1)
                         // . '  + ' . $item['property'] . ": " . valueAsString($item['new value']) . "\n";
                     } else {
                         if (is_array($item['new value'])) {
-                        return $result . str_repeat('    ', $depth - 1) . '  - ' . $item['property']
-                        . ": " . valueAsString($item['value']) . "\n"
-                        . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
-                        . ": {\n" . stylish($item['new value'], $depth + 1) . str_repeat('    ', $depth) . "}\n";
+                            return $result . str_repeat('    ', $depth - 1) . '  - ' . $item['property']
+                            . ": " . valueAsString($item['value']) . "\n"
+                            . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
+                            . ": {\n" . stylish($item['new value'], $depth + 1) . str_repeat('    ', $depth) . "}\n";
                         } else {
                             return $result . str_repeat('    ', $depth - 1) . '  - ' . $item['property']
-                        . ": " . valueAsString($item['value']) . "\n"
-                        . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
-                        . ": " . valueAsString($item['new value']) . "\n";
+                            . ": " . valueAsString($item['value']) . "\n"
+                            . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
+                            . ": " . valueAsString($item['new value']) . "\n";
                         }
                     }
 
