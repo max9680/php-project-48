@@ -20,7 +20,6 @@ function stylish(array $array, int $depth = 1): string
                         return $result . str_repeat('    ', $depth) . $item['property'] . ": "
                         . valueAsString($item['value']) . "\n";
                     }
-                    break;
                 case 'added':
                     if (is_array($item['value'])) {
                         return $result . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
@@ -29,7 +28,6 @@ function stylish(array $array, int $depth = 1): string
                         return $result . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
                         . ": " . valueAsString($item['value']) . "\n";
                     }
-                    break;
                 case 'removed':
                     if (is_array($item['value'])) {
                         return $result . str_repeat('    ', $depth - 1) . '  - ' . $item['property']
@@ -39,7 +37,6 @@ function stylish(array $array, int $depth = 1): string
                         return $result . str_repeat('    ', $depth - 1) . '  - ' . $item['property'] . ": "
                         . valueAsString($item['value']) . "\n";
                     }
-                    break;
                 case 'updated':
                     if (is_array($item['value'])) {
                         if (is_array($item['new value'])) {
@@ -81,7 +78,6 @@ function stylish(array $array, int $depth = 1): string
                     //     $result = $result . str_repeat('    ', $depth - 1) . '  + ' . $item['property']
                     //     . ": " . valueAsString($item['new value']) . "\n";
                     // }
-                    break;
             }
 
 
