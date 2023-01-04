@@ -4,7 +4,7 @@ namespace Differ\Formatters\Json;
 
 function json(array $array): array
 {
-    foreach ($array as $item) {
+    $arrayForJson = array_reduce($array, function($result, $item) {
         if ($item['action'] == 'removed') {
             $index = '  - ' . $item['property'];
 
@@ -52,7 +52,9 @@ function json(array $array): array
                 $result[$index] = $item['value'];
             }
         }
-    }
+        return $result;
+        
+    }, []);
 
-    return $result;
+    return $arrayForJson;
 }
