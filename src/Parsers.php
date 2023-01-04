@@ -16,6 +16,11 @@ function getContentFromFile(string $pathFile): array
     switch ($formatFile) {
         case 'json':
             $contentFile = file_get_contents($pathFile);
+
+            if ($contentFile === false) {
+                throw new \Exception("Can't get content from input file");
+            }
+
             $resultArray = json_decode($contentFile, true, 512, JSON_OBJECT_AS_ARRAY);
             return $resultArray;
 
