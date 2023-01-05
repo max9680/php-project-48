@@ -54,9 +54,8 @@ function json(array $array): array
             }
         }
         $result[$index] = $value;
-        
-        return $result;
 
+        return $result;
     }, []);
 
     return $arrayForJson;
