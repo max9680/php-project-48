@@ -9,9 +9,9 @@ function json(array $array): array
             $index = '  - ' . $item['property'];
 
             if (is_array($item['value'])) {
-                $result[$index] = json($item['value']);
+                $value = json($item['value']);
             } else {
-                $result[$index] = $item['value'];
+                $value = $item['value'];
             }
         }
 
@@ -19,9 +19,9 @@ function json(array $array): array
             $index = '  + ' . $item['property'];
 
             if (is_array($item['value'])) {
-                $result[$index] = json($item['value']);
+                $value = json($item['value']);
             } else {
-                $result[$index] = $item['value'];
+                $value = $item['value'];
             }
         }
 
@@ -29,17 +29,18 @@ function json(array $array): array
             $index = '  - ' . $item['property'];
 
             if (is_array($item['value'])) {
-                $result[$index] = json($item['value']);
+                $value = json($item['value']);
             } else {
-                $result[$index] = $item['value'];
+                $value = $item['value'];
             }
+            $result[$index] = $value;
 
             $index = '  + ' . $item['property'];
 
             if (is_array($item['new value'])) {
-                $result[$index] = json($item['new value']);
+                $value = json($item['new value']);
             } else {
-                $result[$index] = $item['new value'];
+                $value = $item['new value'];
             }
         }
 
@@ -47,12 +48,15 @@ function json(array $array): array
             $index = '    ' . $item['property'];
 
             if (is_array($item['value'])) {
-                $result[$index] = json($item['value']);
+                $value = json($item['value']);
             } else {
-                $result[$index] = $item['value'];
+                $value = $item['value'];
             }
         }
+        $result[$index] = $value;
+        
         return $result;
+
     }, []);
 
     return $arrayForJson;
