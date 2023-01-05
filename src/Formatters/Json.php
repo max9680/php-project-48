@@ -9,9 +9,9 @@ function json(array $array): array
             $index = '  - ' . $item['property'];
 
             if (is_array($item['value'])) {
-                $value = json($item['value']);
+                $result[$index] = json($item['value']);
             } else {
-                $value = $item['value'];
+                $result[$index] = $item['value'];
             }
         }
 
@@ -19,9 +19,9 @@ function json(array $array): array
             $index = '  + ' . $item['property'];
 
             if (is_array($item['value'])) {
-                $value = json($item['value']);
+                $result[$index] = json($item['value']);
             } else {
-                $value = $item['value'];
+                $result[$index] = $item['value'];
             }
         }
 
@@ -29,18 +29,17 @@ function json(array $array): array
             $index = '  - ' . $item['property'];
 
             if (is_array($item['value'])) {
-                $value = json($item['value']);
+                $result[$index] = json($item['value']);
             } else {
-                $value = $item['value'];
+                $result[$index] = $item['value'];
             }
-            $result[$index] = $value;
 
             $index = '  + ' . $item['property'];
 
             if (is_array($item['new value'])) {
-                $value = json($item['new value']);
+                $result[$index] = json($item['new value']);
             } else {
-                $value = $item['new value'];
+                $result[$index] = $item['new value'];
             }
         }
 
@@ -48,13 +47,11 @@ function json(array $array): array
             $index = '    ' . $item['property'];
 
             if (is_array($item['value'])) {
-                $value = json($item['value']);
+                $result[$index] = json($item['value']);
             } else {
-                $value = $item['value'];
+                $result[$index] = $item['value'];
             }
         }
-        $result[$index] = $value;
-
         return $result;
     }, []);
 
