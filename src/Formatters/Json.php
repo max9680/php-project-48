@@ -16,6 +16,8 @@ function json(array $array): array
             } else {
                 $value = $item['value'];
             }
+
+            return array_merge($result, [$index => $value]);
         }
 
         if ($item['action'] == 'added') {
@@ -26,6 +28,8 @@ function json(array $array): array
             } else {
                 $value = $item['value'];
             }
+
+            return array_merge($result, [$index => $value]);
         }
 
         if ($item['action'] == 'updated') {
@@ -44,6 +48,8 @@ function json(array $array): array
             } else {
                 $value1 = $item['new value'];
             }
+
+            return array_merge($result, [$index => $value, $index1 => $value1]);
         }
 
         if ($item['action'] == 'same') {
@@ -54,11 +60,7 @@ function json(array $array): array
             } else {
                 $value = $item['value'];
             }
-        }
 
-        if (isset($index1)) {
-            return array_merge($result, [$index => $value, $index1 => $value1]);
-        } else {
             return array_merge($result, [$index => $value]);
         }
     }, []);
