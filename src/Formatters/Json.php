@@ -8,9 +8,6 @@ function json(array $array): array
 {
     $arrayForJson = array_reduce($array, function ($result, $item) {
 
-        $index1 = null;
-        $value1 = null;
-
         if ($item['action'] == 'removed') {
             $index = '  - ' . $item['property'];
 
@@ -59,10 +56,10 @@ function json(array $array): array
             }
         }
 
-        if ($index1 == null) {
-            return array_merge($result, [$index => $value]);
-        } else {
+        if (isset($index1)) {
             return array_merge($result, [$index => $value, $index1 => $value1]);
+        } else {
+            return array_merge($result, [$index => $value]);
         }
     }, []);
 
