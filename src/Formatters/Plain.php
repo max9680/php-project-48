@@ -4,6 +4,9 @@ namespace Differ\Formatters\Plain;
 
 use function Differ\Formatters\valueAsString;
 
+  /**
+   * @param bool|string|null $value
+   */
 function normalizeValue($value)
 {
     if (is_array($value)) {
