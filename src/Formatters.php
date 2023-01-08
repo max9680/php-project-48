@@ -6,6 +6,10 @@ use function Differ\Formatters\Stylish\stylish;
 use function Differ\Formatters\Plain\plain;
 use function Differ\Formatters\Json\json;
 
+
+  /**  
+   * @param bool|string|null $value 
+   */ 
 function valueAsString($value): string
 {
     if (is_bool($value)) {
