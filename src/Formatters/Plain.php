@@ -5,7 +5,7 @@ namespace Differ\Formatters\Plain;
 use function Differ\Formatters\valueAsString;
 
   /**
-   * @param array|string $value
+   * @param array|string|bool|null $value
    */
 function normalizeValue($value)
 {
