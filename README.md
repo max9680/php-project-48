@@ -21,11 +21,13 @@ $ make install
 ```
 
 ## Usage
-gendiff (-h|--help)
+```sh
+$ gendiff (-h|--help)
 
-gendiff (-v|--version)
+$ gendiff (-v|--version)
 
-gendiff [--format `<fmt`>] `<firstFile`> `<secondFile`>
+$ gendiff [--format `<fmt`>] `<firstFile`> `<secondFile`>
+```
 
 ## Options
 -h --help &emsp;&emsp; Show this screen
