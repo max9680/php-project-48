@@ -8,12 +8,20 @@ use function Differ\Differ\genDiff;
 
 class DifferTest extends TestCase
 {
-    public function testGenDiffNested(): void
+    public function testGenDiff(): void
     {
         $testResult = file_get_contents("tests/fixtures/stylish.txt");
 
         $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.json", "./tests/fixtures/file2n.json"));
         $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.yml", "./tests/fixtures/file2n.yml"));
+    }
+
+    public function testGenDiffStylish(): void
+    {
+        $testResult = file_get_contents("tests/fixtures/stylish.txt");
+
+        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.json", "./tests/fixtures/file2n.json", 'stylish'));
+        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.yml", "./tests/fixtures/file2n.yml", 'stylish'));
     }
 
     public function testGenDiffPlain(): void
