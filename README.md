@@ -26,7 +26,7 @@ $ gendiff (-h|--help)
 
 $ gendiff (-v|--version)
 
-$ gendiff [--format `<fmt`>] `<firstFile`> `<secondFile`>
+$ gendiff [--format <fmt>] `<firstFile`> `<secondFile`>
 ```
 
 ## Options
