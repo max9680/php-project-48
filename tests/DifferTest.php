@@ -8,35 +8,51 @@ use function Differ\Differ\genDiff;
 
 class DifferTest extends TestCase
 {
-    public function testGenDiff(): void
+    public function additionProvider(): array
+    {
+        return [
+            'json format' => ['json'],
+            'yml format' => ['yml']
+        ];
+    }
+
+    /**
+     * @dataProvider additionProvider
+     */
+    public function testGenDiff(string $format): void
     {
         $testResult = file_get_contents("tests/fixtures/stylish.txt");
 
-        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.json", "./tests/fixtures/file2n.json"));
-        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.yml", "./tests/fixtures/file2n.yml"));
+        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.{$format}", "./tests/fixtures/file2n.{$format}"));
     }
 
-    public function testGenDiffStylish(): void
+    /**
+     * @dataProvider additionProvider
+     */
+    public function testGenDiffStylish(string $format): void
     {
         $testResult = file_get_contents("tests/fixtures/stylish.txt");
 
-        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.json", "./tests/fixtures/file2n.json", 'stylish'));
-        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.yml", "./tests/fixtures/file2n.yml", 'stylish'));
+        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.{$format}", "./tests/fixtures/file2n.{$format}", 'stylish'));
     }
 
-    public function testGenDiffPlain(): void
+    /**
+     * @dataProvider additionProvider
+     */
+    public function testGenDiffPlain(string $format): void
     {
         $testResult = file_get_contents("tests/fixtures/plain.txt");
 
-        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.json", "./tests/fixtures/file2n.json", 'plain'));
-        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.yml", "./tests/fixtures/file2n.yml", 'plain'));
+        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.{$format}", "./tests/fixtures/file2n.{$format}", 'plain'));
     }
 
-    public function testGenDiffJson(): void
+    /**
+     * @dataProvider additionProvider
+     */
+    public function testGenDiffJson(string $format): void
     {
         $testResult = file_get_contents("tests/fixtures/json.txt");
 
-        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.json", "./tests/fixtures/file2n.json", 'json'));
-        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.yml", "./tests/fixtures/file2n.yml", 'json'));
+        $this->assertEquals($testResult, genDiff("./tests/fixtures/file1n.{$format}", "./tests/fixtures/file2n.{$format}", 'json'));
     }
 }
